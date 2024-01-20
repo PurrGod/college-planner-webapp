@@ -1,5 +1,4 @@
 // calendar.js
-import React, { useState } from "react";
 import "./Calendar.css";
 import GridComponent from "./GridComponent.js";
 
