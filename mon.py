@@ -9,6 +9,7 @@ db = client['Majors']  # Replace with your database name
 majors_col = db['classes']  # Replace with your collection name
 
 # Function to get course prerequisites
+tmp = []
 
 def get_course_prerequisites(course_url):
     response = requests.get(course_url)
@@ -25,7 +26,8 @@ def get_course_prerequisites(course_url):
 
 
 # URL of the webpage to scrape
-url = 'https://catalog.ucsc.edu/current/general-catalog/academic-units/baskin-engineering/computational-media/computer-science-computer-game-design-bs/'
+url = 'https://catalog.ucsc.edu/en/current/general-catalog/academic-units/baskin-engineering/computational-media/games-and-playable-media-ms/'
+# url = 'https://catalog.ucsc.edu/current/general-catalog/academic-units/baskin-engineering/computational-media/computer-science-computer-game-design-bs/'
 response = requests.get(url)
 
 if response.status_code == 200:
@@ -46,14 +48,11 @@ if response.status_code == 200:
     for link in courselinks:
         link_text = link.text.strip()
         print(link_text)
-
-
-        if (link.text != ' One of these courses:' and link.text != ' " Either these courses:" ' and link.text == ' or these courses' and not link.text.startswith(" or") and not link.text.startswith(" One") and not link.text.startswith(" Either")):
-
-            course_name = link.text
+        if not link_text.startswith(("One", "Either", "or")):
+            course_name = link_text
             course_url = 'https://catalog.ucsc.edu' + link['href']
             prerequisites = get_course_prerequisites(course_url)
-            
+            # tmp.append((course_name, course_url))
             major_data["requirements"].append(course_name)
             major_data["prerequisites"].append({course_name: prerequisites})
         else:
@@ -62,7 +61,7 @@ if response.status_code == 200:
 
 
     # Insert data into MongoDB
-    # majors_col.insert_one(major_data)
+    majors_col.insert_one(major_data)
     print(f"Data for {major_name} inserted into MongoDB.")
 else:
     print('Failed to retrieve the webpage.')
