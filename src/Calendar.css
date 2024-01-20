@@ -5,41 +5,11 @@
   display: flex;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  flex: 1;
-}
-
-.grid-item {
-  border: 2px solid navy;
-  padding: 10px; /* Adjust padding as needed */
-  position: relative;
-}
-
-.dragged-item {
-  background-color: lightblue; /* Add a background color to dragged item */
-}
-
-.draggable-items {
-  display: flex;
-  justify-content: space-between; /* Arrange draggable items horizontally */
-}
-
-.draggable-item {
-  border: 2px solid navy;
-  padding: 10px;
-  margin: 5px; /* Adjust margin as needed */
-  cursor: grab; /* Change cursor to grab when dragging is possible */
-}
-
 .schedule-container {
   flex: 1;
 }
 
 .classes-list,
 .electives {
-  flex: 1;
   width: 20%;
 }
