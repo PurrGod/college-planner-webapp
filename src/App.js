@@ -16,9 +16,6 @@ function App() {
       <div>
         <Calendar />
       </div>
-      <div>
-        <GridComponent />
-      </div>
     </div>
   );
 }
