@@ -1,0 +1,29 @@
+/* calendar.css */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; /* Adjust the gap between grid items */
+}
+
+.grid-item {
+  border: 2px solid navy; /* Add navy borders to grid items */
+  padding: 10px; /* Adjust padding as needed */
+  position: relative;
+}
+
+.dragged-item {
+  background-color: lightblue; /* Add a background color to dragged item */
+}
+
+.draggable-items {
+  display: flex;
+  justify-content: space-between; /* Arrange draggable items horizontally */
+}
+
+.draggable-item {
+  border: 2px solid navy; /* Add navy borders to draggable items */
+  padding: 10px; /* Adjust padding as needed */
+  margin: 5px; /* Adjust margin as needed */
+  cursor: grab; /* Change cursor to grab when dragging is possible */
+}
