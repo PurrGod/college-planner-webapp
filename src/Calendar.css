@@ -1,6 +1,5 @@
 /* calendar.css */
 .calendar {
-  margin-top: 100px;
   margin-left: 30px;
   margin-right: 30px;
   display: flex;
@@ -14,7 +13,7 @@
 }
 
 .grid-item {
-  border: 2px solid navy; /* Add navy borders to grid items */
+  border: 2px solid navy;
   padding: 10px; /* Adjust padding as needed */
   position: relative;
 }
