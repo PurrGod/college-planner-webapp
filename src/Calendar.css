@@ -1,9 +1,16 @@
 /* calendar.css */
+.calendar {
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+}
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px; /* Adjust the gap between grid items */
+  flex: 1;
 }
 
 .grid-item {
@@ -22,8 +29,18 @@
 }
 
 .draggable-item {
-  border: 2px solid navy; /* Add navy borders to draggable items */
-  padding: 10px; /* Adjust padding as needed */
+  border: 2px solid navy;
+  padding: 10px;
   margin: 5px; /* Adjust margin as needed */
   cursor: grab; /* Change cursor to grab when dragging is possible */
+}
+
+.schedule-container {
+  flex: 1;
+}
+
+.classes-list,
+.electives {
+  flex: 1;
+  width: 20%;
 }

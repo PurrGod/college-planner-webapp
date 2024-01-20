@@ -44,33 +44,41 @@ const Calendar = () => {
 
   return (
     <div className="calendar">
-      <div className="grid-container">
-        {calendarData.map((item, index) => (
-          <div
-            key={index}
-            className="grid-item"
-            onDragOver={handleDragOver}
-            onDragEnter={handleDragEnter}
-            onDrop={(event) => handleDrop(event, index)}
-          >
-            {draggedItem && index === calendarData.indexOf(draggedItem) && (
-              <div className="dragged-item">{draggedItem}</div>
-            )}
-          </div>
-        ))}
-      </div>
+      <div className="schedule-container">
+        <div className="grid-container">
+          {calendarData.map((item, index) => (
+            <div
+              key={index}
+              className="grid-item"
+              onDragOver={handleDragOver}
+              onDragEnter={handleDragEnter}
+              onDrop={(event) => handleDrop(event, index)}
+            >
+              {draggedItem && index === calendarData.indexOf(draggedItem) && (
+                <div className="dragged-item">{draggedItem}</div>
+              )}
+            </div>
+          ))}
+        </div>
 
-      <div className="draggable-items">
-        {calendarData.map((item, index) => (
-          <div
-            key={index}
-            draggable
-            onDragStart={(event) => handleDragStart(event, item)}
-            className="draggable-item"
-          >
-            {item}
-          </div>
-        ))}
+        <div className="draggable-items">
+          {calendarData.map((item, index) => (
+            <div
+              key={index}
+              draggable
+              onDragStart={(event) => handleDragStart(event, item)}
+              className="draggable-item"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="classes-list">
+        <p>classes go here :)</p>
+      </div>
+      <div className="electives">
+        <p>electives go here</p>
       </div>
     </div>
   );
