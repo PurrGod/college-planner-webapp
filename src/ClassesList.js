@@ -35,18 +35,19 @@ const ClassesList = ({ majorClasses }) => {
       <p>Major Reqs</p>
       <div className="classes-list-section">
         {localMajorClasses.map((className) => (
-          <Popup trigger={<div
-            className="c-class"
-            key={className}
-            draggable
-            onDragStart={(e) => handleDragStart(e, className)}
-            onClick={() => handleClassClick(className)}
-          >
-            {className}
-          </div>} position="left center">
-            <h2>{className}</h2>
-            <div>You've gotta do dis</div>
-          </Popup>
+          <div key={className} className="class-wrapper">
+            <Popup trigger={<div
+              className="c-class"
+              draggable
+              onDragStart={(e) => handleDragStart(e, className)}
+              onClick={() => handleClassClick(className)}
+            >
+              {className}
+            </div>} position="left center">
+              <h2>{className}</h2>
+              <div>You've gotta do dis</div>
+            </Popup>
+          </div>
         ))}
       </div>
       {selectedClass && (
@@ -60,3 +61,34 @@ const ClassesList = ({ majorClasses }) => {
 };
 
 export default ClassesList;
+
+//   return (
+//     <div>
+//       <p>Major Reqs</p>
+//       <div className="classes-list-section">
+//         {localMajorClasses.map((className) => (
+//           <Popup trigger={<div
+//             className="c-class"
+//             key={className}
+//             draggable
+//             onDragStart={(e) => handleDragStart(e, className)}
+//             onClick={() => handleClassClick(className)}
+//           >
+//             {className}
+//           </div>} position="left center">
+//             <h2>{className}</h2>
+//             <div>You've gotta do dis</div>
+//           </Popup>
+//         ))}
+//       </div>
+//       {selectedClass && (
+//         <Popup
+//           className={selectedClass}
+//           onClose={handleClosePopup}
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default ClassesList;

@@ -74,6 +74,55 @@ function GridComponent() {
     }
   };
 
+  function arrayToCSV(data) {
+    const csvRows = [];
+    // Add headers
+    const headers = ['Year', 'Fall', 'Winter', 'Spring', 'Summer'];
+    csvRows.push(headers.join(','));
+    // Loop through each year
+    for (let yearIndex = 0; yearIndex < years.length; yearIndex++) {
+      // For each quarter in the year
+      for (let classIndex = 0; classIndex < 4; classIndex++) {
+        const row = [(classIndex === 0) ? years[yearIndex] : ''];
+
+
+        // For each quarter, add the class to the row, or an empty string if no class
+        for (let quarter = 0; quarter < 4; quarter++) {
+          const cellIndex = yearIndex * 4 + quarter; // Calculate the index for the quarter
+          const classText = data[cellIndex][classIndex] || ""; // Get the class or an empty string
+          row.push(`"${classText.replace(/"/g, '""')}"`); // Escape quotes and add to the row
+        }
+
+        // Add the completed row to the CSV
+        csvRows.push(row.join(','));
+      }
+    }
+
+    return csvRows.join('\n');
+  }
+  function exportToCSV() {
+    // Convert the grid data to a CSV string
+    const csvData = arrayToCSV(gridData);
+
+    // Create a Blob from the CSV string
+    const blob = new Blob([csvData], { type: 'text/csv' });
+
+    // Create an object URL for the Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Create a temporary link element and trigger the download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '4-year-plan.csv';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Clean up the URL object
+    window.URL.revokeObjectURL(url);
+  }
+
   return (
     <div className="schedule-wrapper">
       <div className="section1">
@@ -117,6 +166,7 @@ function GridComponent() {
           ))}
         </div>
       </div>
+      <button onClick={exportToCSV}>Export to CSV</button>
     </div>
   );
 }
