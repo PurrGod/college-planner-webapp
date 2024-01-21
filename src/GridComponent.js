@@ -2,9 +2,6 @@
 import "./GridComponent.css";
 import React, { useState } from "react";
 
-// const texts = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Text 6"];
-const initialClasses = ["Class A", "Class B", "Class C"];
-
 function GridComponent() {
   const quarters = ["Fall", "Winter", "Spring", "Summer"];
 
