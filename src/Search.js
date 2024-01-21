@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import "./Search.css";
 
-const Search = ({ updateMajorClasses }) => {
+const Search = ({ updateMajorClasses, setLoading }) => {
   const initialMajors = [
     "Computer Science: Computer Game Design B.S.",
     "Computer Engineering B.S.",
@@ -31,15 +31,18 @@ const Search = ({ updateMajorClasses }) => {
 
     if (selectedMajor) {
       try {
+        setLoading(true);
+
         const apiEndpoint = `https://uscc-classes.osc-fr1.scalingo.io/api/majors/${selectedMajor.value}`;
         const response = await fetch(apiEndpoint);
         const data = await response.json();
         console.log(data);
 
-        // Call the function to update majorClasses in Calendar.js
         updateMajorClasses(data.requirements);
       } catch (error) {
         console.error("Error fetching major classes:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };

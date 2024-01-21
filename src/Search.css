@@ -2,7 +2,7 @@
 
 .search-bar {
   display: flex;
-  margin: 20px auto 20px auto;
+  margin: 10px auto 20px auto;
   padding: 5px;
   border-radius: 8px;
 }
@@ -17,15 +17,19 @@
 }
 
 .search-bar button {
+  width: 20%;
+  margin: 0 0px 0 10px;
   background-color: rgb(109, 106, 42);
+  color: white;
   font-family: "Josefin Sans";
-  font-size: medium;
- /* Different color for the button */
-  color: #fff;
+  font-size: 20px;
+  text-align: center;
+
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  padding-top: 2px;
 }
 
 .search-bar button:hover {
