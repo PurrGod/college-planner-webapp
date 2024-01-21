@@ -1,37 +1,45 @@
+.column-title-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.quarter-bar-item {
+  width: 25%;
+  border: 1px solid black;
+}
+
 /* GridComponent.css */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 0; /* Remove space between columns */
-    grid-row-gap: 0;
-
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0; /* Remove space between columns */
+  grid-row-gap: 0;
 }
 .grid-cell {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    background-color: #f1f1f1;
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    background: #eee;
-    width:120;
-    height: 120px;
-    background-color: rgba(230, 255, 255, 0.651);
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  background: #eee;
+  width: 120;
+  height: 120px;
+  background-color: rgba(230, 255, 255, 0.651);
 }
 .styled-text {
-    color: rgb(48, 48, 255); /* Change text color to blue */
-    font-weight: bold; /* Make text bold */
-    /* align text component */
+  color: rgb(48, 48, 255); /* Change text color to blue */
+  font-weight: bold; /* Make text bold */
+  /* align text component */
 }
 .grid-cell:hover {
-    background: #fffc4342;
+  background: #ddd;
 }
 
-.grid-cell>div {
-    border: 1px solid #cccccc9d;
+.grid-cell div {
+  border: 1px solid #ccc;
 }
 
-
-.grid-cell>div:last-child {
-    border-bottom: 1px solid #ccc;;
+.grid-cell div:last-child {
+  border-bottom: 1px solid #ccc;
 }
