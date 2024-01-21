@@ -96,19 +96,6 @@ function GridComponent() {
           ))}
         </div>
       ))}
-
-      {initialClasses.map((className) => (
-        <div
-          key={className}
-          draggable
-          onDragStart={(e) => {
-            e.dataTransfer.setData("text", className);
-            e.dataTransfer.setData("sourceGrid", "classes-list");
-          }}
-        >
-          {className}
-        </div>
-      ))}
     </div>
   );
 }
