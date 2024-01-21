@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./Search.css";
+import { useMajor } from './MajorContext'; // Adjust the path if your file structure is different
+
+
 
 const Search = ({ updateMajorClasses }) => {
   const initialMajors = [
@@ -26,6 +29,9 @@ const Search = ({ updateMajorClasses }) => {
   const [majors] = useState(formatOptions(initialMajors));
   const [selectedMajor, setSelectedMajor] = useState(null);
 
+  const { setPreReq, setMajorIndexes } = useMajor();
+
+
   const handleSearch = async () => {
     setSelectedMajor(selectedMajor);
 
@@ -35,7 +41,14 @@ const Search = ({ updateMajorClasses }) => {
         const response = await fetch(apiEndpoint);
         const data = await response.json();
         console.log(data);
-
+        let preReq = data.prerequisites;
+        setPreReq(data.prerequisites);
+        let majorIndexs = {};
+        for (let i = 0; i < data.requirements.length; i++) {
+          majorIndexs[data.requirements[i]] = i;
+        }
+        setMajorIndexes(majorIndexs);
+        
         // Call the function to update majorClasses in Calendar.js
         updateMajorClasses(data.requirements);
       } catch (error) {
@@ -43,6 +56,8 @@ const Search = ({ updateMajorClasses }) => {
       }
     }
   };
+
+  
 
   return (
     <div className="search-bar">

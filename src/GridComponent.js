@@ -166,7 +166,9 @@ function GridComponent() {
           ))}
         </div>
       </div>
+      <div className="section3">
       <button onClick={exportToCSV}>Export to CSV</button>
+      </div>
     </div>
   );
 }

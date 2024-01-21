@@ -4,10 +4,14 @@ import React, { useEffect, useState } from "react";
 import "./ClassesList.css"; // Import the CSS file
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { useMajor } from './MajorContext'; // Import the context hook
 
 const ClassesList = ({ majorClasses }) => {
   const [localMajorClasses, setLocalMajorClasses] = useState([]);
   const [selectedClass, setSelectedClass] = useState(null);
+  const [classPrereqs, setClassPrereqs] = useState(null);
+  const { preReq, majorIndexes } = useMajor(); // Use the context hook to get preReq and majorIndexes
+
 
   useEffect(() => {
     // Update local state when majorClasses prop changes
@@ -20,14 +24,18 @@ const ClassesList = ({ majorClasses }) => {
   };
 
   const handleClassClick = (className) => {
-    // Toggle selection if the same class is clicked again
-    setSelectedClass((prevSelectedClass) =>
-      prevSelectedClass === className ? null : className
-    );
+    const classIndex = majorIndexes[className];
+    const prerequisites = classIndex !== undefined ? preReq[classIndex] : null;
+
+    setSelectedClass(className);
+    setClassPrereqs(prerequisites);
   };
+
 
   const handleClosePopup = () => {
     setSelectedClass(null);
+    setClassPrereqs(null); // Reset prerequisites on closing the popup
+
   };
 
   return (
@@ -36,30 +44,31 @@ const ClassesList = ({ majorClasses }) => {
       <div className="classes-list-section">
         {localMajorClasses.map((className) => (
           <div key={className} className="class-wrapper">
-            <Popup trigger={<div
+            <div
               className="c-class"
               draggable
               onDragStart={(e) => handleDragStart(e, className)}
               onClick={() => handleClassClick(className)}
             >
               {className}
-            </div>} position="left center">
+            </div>
+
+            <Popup
+              open={selectedClass === className}
+              closeOnDocumentClick
+              onClose={() => setSelectedClass(null)}
+              position="left center"
+
+            >
               <h2>{className}</h2>
-              <div>You've gotta do dis</div>
-            </Popup>
+              <div>{classPrereqs && classPrereqs[className] != 5 ? classPrereqs[className] : 'None'}</div>
+              </Popup>
           </div>
         ))}
       </div>
-      {selectedClass && (
-        <Popup
-          className={selectedClass}
-          onClose={handleClosePopup}
-        />
-      )}
     </div>
   );
 };
-
 export default ClassesList;
 
 //   return (
