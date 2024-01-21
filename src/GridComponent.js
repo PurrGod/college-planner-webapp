@@ -34,29 +34,43 @@ function GridComponent() {
     e.preventDefault();
   };
 
+  const handleDeleteItem = (rowIndex, item) => {
+    const updatedGridData = [...gridData];
+    updatedGridData[rowIndex] = updatedGridData[rowIndex].filter(
+      (existingItem) => existingItem !== item
+    );
+    setGridData(updatedGridData);
+  };
+
   const handleDrop = (e, rowIndex) => {
     e.preventDefault();
 
     const draggedText = e.dataTransfer.getData("text");
     const sourceGrid = e.dataTransfer.getData("sourceGrid");
 
-    const updatedGridData = [...gridData];
-
-    // Check if the dragged item is already present in the destination grid
-    const isItemInDestination = updatedGridData[rowIndex].includes(draggedText);
-
-    if (!isItemInDestination) {
-      // If the item is not already present, remove it from its original position
-      updatedGridData.forEach((row, i) => {
-        const indexOfDraggedItem = row.indexOf(draggedText);
-        if (indexOfDraggedItem !== -1) {
-          updatedGridData[i].splice(indexOfDraggedItem, 1);
-        }
-      });
-
-      // Push the dragged item to the new position
-      updatedGridData[rowIndex].push(draggedText);
+    // Check if the drop is triggered by a double-click
+    if (e.detail === 2) {
+      const updatedGridData = [...gridData];
+      updatedGridData[rowIndex] = updatedGridData[rowIndex].filter(
+        (item) => item !== draggedText
+      );
       setGridData(updatedGridData);
+    } else {
+      // Handle regular drop logic
+      const updatedGridData = [...gridData];
+      const isItemInDestination =
+        updatedGridData[rowIndex].includes(draggedText);
+
+      if (!isItemInDestination) {
+        updatedGridData.forEach((row, i) => {
+          const indexOfDraggedItem = row.indexOf(draggedText);
+          if (indexOfDraggedItem !== -1) {
+            updatedGridData[i].splice(indexOfDraggedItem, 1);
+          }
+        });
+        updatedGridData[rowIndex].push(draggedText);
+        setGridData(updatedGridData);
+      }
     }
   };
 
@@ -93,6 +107,7 @@ function GridComponent() {
                 <div
                   key={text}
                   onDragStart={(e) => handleDragStart(e, i, j)}
+                  onDoubleClick={() => handleDeleteItem(i, text)} // Add this line
                   draggable
                 >
                   {text}
