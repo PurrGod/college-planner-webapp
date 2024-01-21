@@ -1,6 +1,7 @@
 // GridComponent.js
 import "./GridComponent.css";
 import React, { useState, useEffect } from "react";
+
 let gridDataGlobal = [
   [],
   [],
