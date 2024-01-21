@@ -9,11 +9,8 @@
   flex: 1;
 }
 
-.classes-list,
-.electives {
-  width: 20%;
-}
-.classes-list {
-  background-color: blueviolet;
-  height: auto;
-}
+.classes-list, .electives-list{
+  width: 10%;
+  background-color: rgb(148, 148, 148);
+  height: 570px;
+} 

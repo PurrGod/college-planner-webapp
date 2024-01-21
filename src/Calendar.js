@@ -3,6 +3,7 @@ import React from 'react';
 import "./Calendar.css";
 import GridComponent from "./GridComponent.js";
 import ClassesList from "./ClassesList.js";
+import ElectivesList from "./ElectivesList.js";
 
 const Calendar = () => {
   return (
@@ -15,8 +16,8 @@ const Calendar = () => {
         <ClassesList />
       </div>
 
-      <div className="electives">
-        <p>Electives go here</p>
+      <div className="electives-list">
+        <ElectivesList />
       </div>
     </div>
   );
