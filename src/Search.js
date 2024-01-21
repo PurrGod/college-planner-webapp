@@ -25,7 +25,7 @@ const Search = () => {
     }));
   };
 
-  const [majors, setMajors] = useState(formatOptions(initialMajors));
+  const [majors] = useState(formatOptions(initialMajors));
   const [selectedMajor, setSelectedMajor] = useState(null);
 
   const handleSearch = (selectedOption) => {
@@ -40,8 +40,9 @@ const Search = () => {
   };
 
   return (
-    <div  className="search-bar">
-      <Select style={{width: '70%'}}
+    <div className="search-bar">
+      <Select
+        style={{ width: "70%" }}
         placeholder="Search for UCSC Majors..."
         options={majors}
         isSearchable
