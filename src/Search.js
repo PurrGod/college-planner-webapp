@@ -15,6 +15,19 @@ const Search = ({ updateMajorClasses, setLoading }) => {
     "Economics B.A.",
     "Environmental Studies B.A.",
     "Biomolecular Engineering and Bioinformatics B.S.",
+    "Politics B.A.",
+    "Latin American and Latino Studies B.A.",
+    "Global and Community Health B.A.",
+    "Games and Playable Media M.S.",
+    "Sociology B.A.",
+    "Biotechnology B.A.",
+    "Electrical Engineering B.S.",
+    "Robotics Engineering B.S.",
+    "Community Studies B.A.",
+    "Education, Democracy, and Justice B.A.",
+    "Agroecology B.A.",
+    "Environmental Studies/Biology Combined Major B.A.",
+    "Global and Community Health B.A.",
   ];
 
   const formatOptions = (majors) => {

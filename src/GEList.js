@@ -20,25 +20,18 @@ const my_GEs = [
   "C1",
   "C2",
 ];
-const geList = [];
-
-for (let i = 0; i < my_GEs.length; i++) {
-  geList.push(`${my_GEs[i]}`);
-}
+const geList = my_GEs.map((ge) => `${ge}`);
 
 const GEList = () => {
   const [selectedClass, setSelectedClass] = useState(null);
 
   const handleDragStart = (e, className) => {
     e.dataTransfer.setData("text", className);
-    e.dataTransfer.setData("sourceGrid", "classes-list");
+    e.dataTransfer.setData("sourceGrid", "ge-list");
   };
 
   const handleClassClick = (className) => {
-    // Toggle selection if the same class is clicked again
-    setSelectedClass((prevSelectedClass) =>
-      prevSelectedClass === className ? null : className
-    );
+    setSelectedClass(selectedClass === className ? null : className);
   };
 
   const handleClosePopup = () => {
@@ -50,28 +43,28 @@ const GEList = () => {
       <p>GE's</p>
       <div className="ge-list-section">
         {geList.map((className) => (
-          <Popup
-            trigger={
-              <div
-                className="ge-class"
-                key={className}
-                draggable
-                onDragStart={(e) => handleDragStart(e, className)}
-                onClick={() => handleClassClick(className)}
-              >
-                {className}
-              </div>
-            }
-            position="left center"
-          >
-            <h2>{className}</h2>
-            <div>ge You've gotta do dis</div>
-          </Popup>
+          <div key={className} className="ge-class-wrapper">
+            <div
+              className="ge-class"
+              draggable
+              onDragStart={(e) => handleDragStart(e, className)}
+              onClick={() => handleClassClick(className)}
+            >
+              {className}
+            </div>
+
+            {/* Popup for each class */}
+            <Popup
+              open={selectedClass === className}
+              closeOnDocumentClick
+              onClose={handleClosePopup}
+            >
+              <h2>{className}</h2>
+              <div>Prerequisites: None</div>
+            </Popup>
+          </div>
         ))}
       </div>
-      {selectedClass && (
-        <Popup className={selectedClass} onClose={handleClosePopup} />
-      )}
     </div>
   );
 };

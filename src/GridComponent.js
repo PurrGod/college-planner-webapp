@@ -11,7 +11,7 @@ function arrayToCSV(data) {
     for (let classIndex = 0; classIndex < 4; classIndex++) {
       const row = [classIndex === 0 ? data[yearIndex * 4] : ""];
       for (let quarter = 0; quarter < 4; quarter++) {
-        const cellIndex = yearIndex * 4 + quarter; // Calculate the index for the quarter
+        const cellIndex = yearIndex * 4 + quarter;
         const classText = data[cellIndex][classIndex] || ""; // Get the class or an empty string
         row.push(`"${classText.replace(/"/g, '""')}"`); // Escape quotes and add to the row
       }
@@ -112,7 +112,6 @@ export const GridComponent = () => {
       );
       setGridData(updatedGridData);
     } else {
-      // Handle regular drop logic
       const updatedGridData = [...gridData];
       const isItemInDestination =
         updatedGridData[rowIndex].includes(draggedText);
