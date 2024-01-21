@@ -2,35 +2,35 @@
 import "./GridComponent.css";
 import React, { useState } from "react";
 
-const texts = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Text 6"];
+// const texts = ["Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Text 6"];
 const initialClasses = ["Class A", "Class B", "Class C"];
 
 function GridComponent() {
-  const [gridData, setGridData] = useState([
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-  ]);
+    const [gridData, setGridData] = useState([
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ]);
 
-  const handleDragStart = (e, rowIndex, colIndex) => {
-    const text = gridData[rowIndex][colIndex];
-    // Remove item from gridData
-    const updatedGrid = [...gridData];
-    updatedGrid[rowIndex].splice(colIndex, 1);
-    setGridData(updatedGrid);
+    const handleDragStart = (e, rowIndex, colIndex) => {
+        const text = gridData[rowIndex][colIndex];
+        // Remove item from gridData
+        const updatedGrid = [...gridData];
+        updatedGrid[rowIndex].splice(colIndex, 1);
+        setGridData(updatedGrid);
 
     e.dataTransfer.setData("text", text);
     e.dataTransfer.setData("sourceGrid", "currentGrid");
