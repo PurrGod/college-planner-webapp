@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./Search.css";
+import { useMajor } from "./MajorContext";
 
 const Search = ({ updateMajorClasses, setLoading }) => {
   const initialMajors = [
@@ -25,6 +26,7 @@ const Search = ({ updateMajorClasses, setLoading }) => {
 
   const [majors] = useState(formatOptions(initialMajors));
   const [selectedMajor, setSelectedMajor] = useState(null);
+  const { setPreReq, setMajorIndexes } = useMajor();
 
   const handleSearch = async () => {
     setSelectedMajor(selectedMajor);
@@ -37,7 +39,15 @@ const Search = ({ updateMajorClasses, setLoading }) => {
         const response = await fetch(apiEndpoint);
         const data = await response.json();
         console.log(data);
+        let preReq = data.prerequisites;
+        setPreReq(data.prerequisites);
+        let majorIndexs = {};
+        for (let i = 0; i < data.requirements.length; i++) {
+          majorIndexs[data.requirements[i]] = i;
+        }
+        setMajorIndexes(majorIndexs);
 
+        // Call the function to update majorClasses in Calendar.js
         updateMajorClasses(data.requirements);
       } catch (error) {
         console.error("Error fetching major classes:", error);
