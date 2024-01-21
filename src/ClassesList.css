@@ -4,12 +4,13 @@
   margin: 0px;
 }
 
-.class {
+.c-class {
   margin: 10px;
   background-color: white;
   border-radius: 8px;
   padding: 10px;
 }
-
-/* seems like wehen changing class in 
-classeslist, electiveslist also changes */
+.c-class:hover {
+  box-shadow: 0 0 13px #32d6ff;
+  background-color: #bbdff7;
+}

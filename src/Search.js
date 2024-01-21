@@ -1,9 +1,6 @@
-// Search.js
-
 import React, { useState } from "react";
 import Select from "react-select";
 import "./Search.css";
-import ClassesList from "./ClassesList"; // Import the ClassesList component
 
 const Search = ({ updateMajorClasses }) => {
   const initialMajors = [
@@ -47,24 +44,17 @@ const Search = ({ updateMajorClasses }) => {
     }
   };
 
-  const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      width: "100%", // Set width to 100%
-    }),
-  };
-
   return (
     <div className="search-bar">
-      <Select
-        style={{ width: "70%" }}
-        placeholder="Search for UCSC Majors..."
-        options={majors}
-        isSearchable
-        value={selectedMajor}
-        onChange={(selectedOption) => setSelectedMajor(selectedOption)}
-        styles={customStyles}
-      />
+      <div className="inp">
+        <Select
+          placeholder="Search for UCSC Majors..."
+          options={majors}
+          isSearchable
+          value={selectedMajor}
+          onChange={(selectedOption) => setSelectedMajor(selectedOption)}
+        />
+      </div>
       <button onClick={handleSearch}>Search</button>
     </div>
   );

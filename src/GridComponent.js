@@ -40,16 +40,21 @@ function GridComponent() {
     const draggedText = e.dataTransfer.getData("text");
     const sourceGrid = e.dataTransfer.getData("sourceGrid");
 
-    if (sourceGrid === "grid") {
-      // Handle drop within the grid
-      const updatedGridData = [...gridData];
-      updatedGridData[rowIndex] = updatedGridData[rowIndex].map((text, j) =>
-        j === rowIndex ? draggedText : text
-      );
-      setGridData(updatedGridData);
-    } else if (sourceGrid === "classes-list") {
-      // Handle drop from classes list to grid
-      const updatedGridData = [...gridData];
+    const updatedGridData = [...gridData];
+
+    // Check if the dragged item is already present in the destination grid
+    const isItemInDestination = updatedGridData[rowIndex].includes(draggedText);
+
+    if (!isItemInDestination) {
+      // If the item is not already present, remove it from its original position
+      updatedGridData.forEach((row, i) => {
+        const indexOfDraggedItem = row.indexOf(draggedText);
+        if (indexOfDraggedItem !== -1) {
+          updatedGridData[i].splice(indexOfDraggedItem, 1);
+        }
+      });
+
+      // Push the dragged item to the new position
       updatedGridData[rowIndex].push(draggedText);
       setGridData(updatedGridData);
     }

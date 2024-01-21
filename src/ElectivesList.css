@@ -10,9 +10,9 @@
   border-radius: 8px;
   padding: 10px;
 }
-.e-class:hover { 
+.e-class:hover {
   box-shadow: 0 0 13px #32d6ff;
   background-color: #bbdff7;
- }
+}
 /* seems like wehen changing class in 
 classeslist, electiveslist also changes */

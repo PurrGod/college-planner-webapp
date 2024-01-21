@@ -10,21 +10,23 @@ import Search from "./Search.js";
 const Calendar = () => {
   const [majorClasses, setMajorClasses] = useState([]);
 
-  // Pass this function to Search.js to update majorClasses
   const updateMajorClasses = (data) => {
     setMajorClasses(data);
   };
 
   return (
     <div className="calendar">
-      <Search updateMajorClasses={updateMajorClasses} />
-      <div className="content-container">
+      <div className="container1">
+        <div className="Search">
+          <Search updateMajorClasses={updateMajorClasses} />
+        </div>
+
         <div className="schedule-container">
           <GridComponent />
         </div>
-
+      </div>
+      <div className="container2">
         <div className="classes-list">
-          {/* Pass majorClasses as a prop to ClassesList */}
           <ClassesList majorClasses={majorClasses} />
         </div>
 

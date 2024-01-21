@@ -1,7 +1,6 @@
 import "./App.css";
 import Bar from "./Bar.js"; // Assuming bar.js is in the same directory
 import Calendar from "./Calendar.js"; // Assuming calendar.js is in the same directory
-import Search from "./Search.js";
 
 function App() {
   return (

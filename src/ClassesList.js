@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./ClassesList.css"; // Import the CSS file
 
-
-
 const ClassesList = ({ majorClasses }) => {
   const [localMajorClasses, setLocalMajorClasses] = useState([]);
 
@@ -24,7 +22,7 @@ const ClassesList = ({ majorClasses }) => {
       <div className="classes-list-section">
         {localMajorClasses.map((className) => (
           <div
-            className="class"
+            className="c-class"
             key={className}
             draggable
             onDragStart={(e) => handleDragStart(e, className)}
