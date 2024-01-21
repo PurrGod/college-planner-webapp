@@ -18,6 +18,9 @@
 
 .search-bar button {
   background-color: rgb(109, 106, 42);
+  font-family: "Josefin Sans";
+  font-size: medium;
+ /* Different color for the button */
   color: #fff;
   border: none;
   border-radius: 6px;

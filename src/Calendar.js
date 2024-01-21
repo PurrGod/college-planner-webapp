@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./Calendar.css";
 import GridComponent from "./GridComponent.js";
 import ClassesList from "./ClassesList.js";
-import ElectivesList from "./ElectivesList.js";
+import GEList from "./GEList.js";
 import Search from "./Search.js";
 
 const Calendar = () => {
@@ -30,8 +30,8 @@ const Calendar = () => {
           <ClassesList majorClasses={majorClasses} />
         </div>
 
-        <div className="electives-list">
-          <ElectivesList />
+        <div className="ge-list">
+          <GEList />
         </div>
       </div>
     </div>

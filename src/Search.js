@@ -37,7 +37,7 @@ const Search = ({ updateMajorClasses }) => {
         console.log(data);
 
         // Call the function to update majorClasses in Calendar.js
-        updateMajorClasses(data);
+        updateMajorClasses(data.requirements);
       } catch (error) {
         console.error("Error fetching major classes:", error);
       }

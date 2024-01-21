@@ -23,9 +23,17 @@
 }
 
 .classes-list,
-.electives-list {
+.ge-list {
   width: 50%;
   height: auto;
   background-color: rgb(27, 56, 110);
   border-radius: 8px;
+}
+.classes-list{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.ge-list{
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }

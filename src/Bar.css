@@ -27,6 +27,7 @@
 
 .login-btn,
 .signup-btn {
+  font-family: "Josefin Sans";
   border-radius: 2px;
   background-color: #28a9ff46;
   color: #FFFFFF;
@@ -66,26 +67,3 @@
   opacity: 1;
   right: 0;
 }
-
-/* 
-.bar button {
-  cursor: pointer;
-
-  height: 100%;
-  border-left: none;
-  border-top: none;
-  border-bottom: none;
-  border-right: 2px solid rgb(224, 224, 224);
-  border-radius: 15px;
-
-  padding: 20px 15px 15px 15px;
-
-  color: rgb(255, 255, 255);
-  background-color: transparent;
-  font-size: 25px;
-  font-family: "Josefin Sans";
-}
-
-.bar button:hover {
-  background-color: rgb(109, 106, 42);
-} */
