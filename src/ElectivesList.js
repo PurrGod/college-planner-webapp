@@ -19,7 +19,7 @@ const ElectivesList = () => {
             <p>Electives</p>
             <div className="electives-list-section">
                 {electivesList.map((className) => (
-                    <div className="class"
+                    <div className="e-class"
                         key={className}
                         draggable
                         onDragStart={(e) => handleDragStart(e, className)}

@@ -1,11 +1,18 @@
 .electives-list-section {
-  max-height: 530px; /* Set a maximum height for the container */
+  max-height: 535px; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrollbar if content overflows */
   margin: 0px;
 }
 
-.class {
+.e-class {
   margin: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 10px;
 }
+.e-class:hover { 
+  box-shadow: 0 0 13px #32d6ff;
+  background-color: #bbdff7;
+ }
 /* seems like wehen changing class in 
 classeslist, electiveslist also changes */

@@ -21,9 +21,15 @@ const Bar = () => {
     <div className="bar">
       <p className="top-text">UCSC Major Classes Planner</p>
 
-      <button onClick={handleLoginClick}>Log In</button>
+      <button className="login-btn" onClick={handleLoginClick}>
+        <span>
+          Log In
+        </span>
+      </button>
       <button className="signup-btn" onClick={handleSignupClick}>
-        Sign Up
+        <span>
+          Sign Up
+        </span>
       </button>
 
       {showPopup && <Popup onClose={handleClosePopup} />}
