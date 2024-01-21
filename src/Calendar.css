@@ -6,12 +6,13 @@
 }
 
 .schedule-container {
-  flex: 1;
   padding-right: 30px;
+  width: 70%;
 }
 
-.classes-list, .electives-list{
+.classes-list,
+.electives-list {
   width: 15%;
-  background-color: rgb(240, 240, 240);
   height: 585px;
-} 
+  background-color: rgb(23, 49, 97);
+}
