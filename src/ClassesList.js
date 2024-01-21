@@ -1,14 +1,18 @@
 // ClassesList.js
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import "./ClassesList.css"; // Import the CSS file
 
-const classesList = [];
 
-for (let i = 1; i <= 70; i++) {
-  classesList.push(`Class ${i}`);
-}
 
-const ClassesList = () => {
+const ClassesList = ({ majorClasses }) => {
+  const [localMajorClasses, setLocalMajorClasses] = useState([]);
+
+  useEffect(() => {
+    // Update local state when majorClasses prop changes
+    setLocalMajorClasses(majorClasses ?? []);
+  }, [majorClasses]);
+
   const handleDragStart = (e, className) => {
     e.dataTransfer.setData("text", className);
     e.dataTransfer.setData("sourceGrid", "classes-list");
@@ -18,8 +22,9 @@ const ClassesList = () => {
     <div>
       <p>Major Reqs</p>
       <div className="classes-list-section">
-        {classesList.map((className) => (
-          <div className="class"
+        {localMajorClasses.map((className) => (
+          <div
+            className="class"
             key={className}
             draggable
             onDragStart={(e) => handleDragStart(e, className)}

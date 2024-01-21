@@ -10,9 +10,6 @@ function App() {
         <Bar />
       </div>
       <div>
-        <Search />
-      </div>
-      <div>
         <Calendar />
       </div>
     </div>

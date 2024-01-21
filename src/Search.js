@@ -3,19 +3,20 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./Search.css";
+import ClassesList from "./ClassesList"; // Import the ClassesList component
 
-const Search = () => {
+const Search = ({ updateMajorClasses }) => {
   const initialMajors = [
-    "Computer Science",
-    "Biology",
-    "Psychology",
-    "Environmental Studies",
-    "Economics",
-    "Mathematics",
-    "History",
-    "Art",
-    "Physics",
-    "Sociology",
+    "Computer Science: Computer Game Design B.S.",
+    "Computer Engineering B.S.",
+    "Art B.A.",
+    "Psychology B.A.",
+    "Technology and Information Management B.S.",
+    "Film and Digital Media B.A.",
+    "History of Art and Visual Culture B.A.",
+    "Economics B.A.",
+    "Environmental Studies B.A.",
+    "Biomolecular Engineering and Bioinformatics B.S.",
   ];
 
   const formatOptions = (majors) => {
@@ -28,8 +29,22 @@ const Search = () => {
   const [majors] = useState(formatOptions(initialMajors));
   const [selectedMajor, setSelectedMajor] = useState(null);
 
-  const handleSearch = (selectedOption) => {
-    setSelectedMajor(selectedOption);
+  const handleSearch = async () => {
+    setSelectedMajor(selectedMajor);
+
+    if (selectedMajor) {
+      try {
+        const apiEndpoint = `https://uscc-classes.osc-fr1.scalingo.io/api/majors/${selectedMajor.value}`;
+        const response = await fetch(apiEndpoint);
+        const data = await response.json();
+        console.log(data);
+
+        // Call the function to update majorClasses in Calendar.js
+        updateMajorClasses(data);
+      } catch (error) {
+        console.error("Error fetching major classes:", error);
+      }
+    }
   };
 
   const customStyles = {
@@ -47,10 +62,10 @@ const Search = () => {
         options={majors}
         isSearchable
         value={selectedMajor}
-        onChange={handleSearch}
-        styles={customStyles} // Apply custom styles
+        onChange={(selectedOption) => setSelectedMajor(selectedOption)}
+        styles={customStyles}
       />
-      <button>Search</button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };

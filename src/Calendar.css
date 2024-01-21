@@ -1,8 +1,15 @@
 /* calendar.css */
+
 .calendar {
   margin-left: 30px;
   margin-right: 30px;
   display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  display: flex;
+  margin-top: 20px; /* Adjust the margin as needed */
 }
 
 .schedule-container {
