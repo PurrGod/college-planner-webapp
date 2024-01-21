@@ -2,15 +2,15 @@
   position: relative;
 }
 .classes-list-section {
-  max-height: 59vh; /* Set a maximum height for the container */
+  max-height: 618px; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrollbar if content overflows */
   margin: 0px;
 }
 .c-class {
-  margin: 1vh;
+  margin: 10px;
   background-color: white;
   border-radius: 8px;
-  padding: 1vh;
+  padding: 10px;
 }
 .c-class:hover {
   box-shadow: 0 0 13px #32d6ff;

@@ -1,10 +1,67 @@
+// GridComponent.js
 import "./GridComponent.css";
 import React, { useState } from "react";
-import ExportButton from "./ExportButton";
 
-function GridComponent() {
-  const quarters = ["Fall", "Winter", "Spring", "Summer"];
+function arrayToCSV(data) {
+  const csvRows = [];
+  const headers = ["Year", "Fall", "Winter", "Spring", "Summer"];
+  csvRows.push(headers.join(","));
+  for (let yearIndex = 0; yearIndex < data.length / 4; yearIndex++) {
+    // For each quarter in the year
+    for (let classIndex = 0; classIndex < 4; classIndex++) {
+      const row = [classIndex === 0 ? data[yearIndex * 4] : ""];
+      for (let quarter = 0; quarter < 4; quarter++) {
+        const cellIndex = yearIndex * 4 + quarter; // Calculate the index for the quarter
+        const classText = data[cellIndex][classIndex] || ""; // Get the class or an empty string
+        row.push(`"${classText.replace(/"/g, '""')}"`); // Escape quotes and add to the row
+      }
+      csvRows.push(row.join(","));
+    }
+  }
+
+  return csvRows.join("\n");
+}
+
+export const getGridData = () => {
+  const initialGridData = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ];
+  return initialGridData;
+};
+
+export const exportToCSV = () => {
+  const gridData = getGridData(); // Fetch the gridData
+  const csvData = arrayToCSV(gridData);
+  const blob = new Blob([csvData], { type: "text/csv" });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "4-year-plan.csv";
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+};
+
+export const GridComponent = () => {
   const years = ["1st year", "2nd year", "3rd year", "4th year"];
+  const quarters = ["Fall", "Winter", "Spring", "Summer"];
 
   const [gridData, setGridData] = useState([
     [],
@@ -73,39 +130,6 @@ function GridComponent() {
     }
   };
 
-  function arrayToCSV(data) {
-    const csvRows = [];
-    const headers = ["Year", "Fall", "Winter", "Spring", "Summer"];
-    csvRows.push(headers.join(","));
-    for (let yearIndex = 0; yearIndex < years.length; yearIndex++) {
-      for (let classIndex = 0; classIndex < 4; classIndex++) {
-        const row = [classIndex === 0 ? years[yearIndex] : ""];
-        for (let quarter = 0; quarter < 4; quarter++) {
-          const cellIndex = yearIndex * 4 + quarter; // Calculate the index for the quarter
-          const classText = data[cellIndex][classIndex] || ""; // Get the class or an empty string
-          row.push(`"${classText.replace(/"/g, '""')}"`); // Escape quotes and add to the row
-        }
-        csvRows.push(row.join(","));
-      }
-    }
-
-    return csvRows.join("\n");
-  }
-
-  function exportToCSV() {
-    const csvData = arrayToCSV(gridData);
-    const blob = new Blob([csvData], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "4-year-plan.csv";
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }
-
   return (
     <div className="schedule-wrapper">
       <div className="section1">
@@ -149,16 +173,10 @@ function GridComponent() {
           ))}
         </div>
       </div>
-      <div className="section3">
-      <button onClick={exportToCSV}>Export to CSV</button>
-      </div>
-      <ExportButton
-        exportToCSV={exportToCSV}
-        gridData={gridData}
-        years={years}
-      />
     </div>
   );
-}
+};
 
-export default GridComponent;
+export const ExportButton = () => {
+  return <button onClick={() => exportToCSV()}>Export to CSV</button>;
+};

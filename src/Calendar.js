@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Calendar.css";
-import GridComponent from "./GridComponent.js";
+import { GridComponent } from "./GridComponent.js";
 import ClassesList from "./ClassesList.js";
 import GEList from "./GEList.js";
 import Search from "./Search.js";

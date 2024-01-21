@@ -1,16 +1,16 @@
 .ge-list-section {
-  max-height: 618px; /* Set a maximum height for the container */
+  max-height: 70vh; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrollbar if content overflows */
-  margin: 0px;
+  margin-top: 0px;
 }
 
 .ge-class {
-  margin: 10px;
-  background-color: rgb(255, 255, 255);
+  margin: 1vh;
+  background-color: white;
   border-radius: 8px;
-  padding: 10px;
+  padding: 1vh;
 }
-.ge-class:hover { 
+.ge-class:hover {
   box-shadow: 0 0 13px #32d6ff;
   background-color: #bbdff7;
 }
