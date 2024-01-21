@@ -1,0 +1,4 @@
+.classes-list-section {
+    max-height: 600px; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+  }
