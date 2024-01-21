@@ -7,10 +7,11 @@
 
 .schedule-container {
   flex: 1;
+  padding-right: 30px;
 }
 
 .classes-list, .electives-list{
-  width: 10%;
-  background-color: rgb(148, 148, 148);
-  height: 570px;
+  width: 15%;
+  background-color: rgb(240, 240, 240);
+  height: 585px;
 } 

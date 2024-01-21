@@ -1,9 +1,15 @@
 .classes-list-section {
-  max-height: 510px; /* Set a maximum height for the container */
+  max-height: 530px; /* Set a maximum height for the container */
   overflow-y: auto; /* Enable vertical scrollbar if content overflows */
   margin: 0px;
 }
 
 .class {
   margin: 10px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
 }
+
+/* seems like wehen changing class in 
+classeslist, electiveslist also changes */
