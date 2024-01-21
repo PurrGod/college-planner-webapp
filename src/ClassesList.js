@@ -19,7 +19,7 @@ const ClassesList = () => {
       <p>Major Reqs</p>
       <div className="classes-list-section">
         {classesList.map((className) => (
-          <div className="class"
+          <div className="c-class"
             key={className}
             draggable
             onDragStart={(e) => handleDragStart(e, className)}

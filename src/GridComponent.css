@@ -14,7 +14,7 @@
   flex-direction: column;
   align-self: flex-end;
   justify-content: space-between;
-  height: 96.5%;
+  height: 94.7%;
 }
 .year-label {
   color: white;
@@ -46,10 +46,18 @@
 
 .quarter-bar-item {
   width: 25%;
-  border: 1px solid black;
+  border: 2px solid black;
   background-color: rgb(27, 56, 110);
   color: white;
   font-family: "Josefin Sans";
+  font-size: 18px;
+  padding: 5px 0 5px 0;
+}
+.quarter-bar-item:first-child {
+  border-top-left-radius: 8px;
+}
+.quarter-bar-item:last-child {
+  border-top-right-radius: 8px;
 }
 
 /* GridComponent.css */

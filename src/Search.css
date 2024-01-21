@@ -20,7 +20,8 @@
 }
 
 .search-bar button {
-  background-color: #4caf50; /* Different color for the button */
+  background-color: rgb(23, 49, 97);
+ /* Different color for the button */
   color: #fff;
   border: none;
   border-radius: 6px; /* Increased border-radius */
@@ -30,5 +31,5 @@
 }
 
 .search-bar button:hover {
-  background-color: #45a049; /* Darker color on hover */
+  background-color: #0682d4; /* Darker color on hover */
 }
