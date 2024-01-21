@@ -12,7 +12,6 @@
 }
 
 .search-bar input {
-  width: 100%; /* Set width to 100% */
   padding: 10px; /* Increased padding */
   border: none;
   border-radius: 6px; /* Increased border-radius */
