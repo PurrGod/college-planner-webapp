@@ -24,11 +24,11 @@
     /* align text component */
 }
 .grid-cell:hover {
-    background: #ddd;
+    background: #fffc4342;
 }
 
 .grid-cell>div {
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc9d;
 }
 
 

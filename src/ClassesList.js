@@ -1,7 +1,12 @@
 // ClassesList.js
 import React from 'react';
+import './ClassesList.css'; // Import the CSS file
 
-const classesList = ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6"];
+const classesList = [];
+
+for (let i = 1; i <= 70; i++) {
+  classesList.push(`Class ${i}`);
+}
 
 const ClassesList = () => {
   const handleDragStart = (e, className) => {
@@ -12,15 +17,19 @@ const ClassesList = () => {
   return (
     <div>
       <p>Classes go here :)</p>
-      {classesList.map((className) => (
-        <div
-          key={className}
-          draggable
-          onDragStart={(e) => handleDragStart(e, className)}
-        >
-          {className}
-        </div>
-      ))}
+      <div className="classes-list-section">
+        <ul className="classes-list-ul">
+          {classesList.map((className) => (
+            <div
+              key={className}
+              draggable
+              onDragStart={(e) => handleDragStart(e, className)}
+            >
+              {className}
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
